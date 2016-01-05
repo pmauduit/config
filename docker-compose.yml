@@ -1,0 +1,37 @@
+database:
+  image: georchestra-db
+
+ldap:
+  image: georchestra-ldap
+
+proxy:
+  image: security-proxy
+  ports:
+    - "8080:8080"
+  links:
+    - database
+    - ldap
+    - cas
+    - mapfishapp
+    - header
+  volumes:
+    - ./datadir:/etc/georchestra
+
+cas:
+  image: cas
+  links:
+    - ldap
+  volumes:
+    - ./datadir:/etc/georchestra
+
+mapfishapp:
+  image: mapfishapp
+  links:
+    - database
+  volumes:
+    - ./datadir:/etc/georchestra
+
+header:
+  image: header
+  volumes:
+    - ./datadir:/etc/georchestra
