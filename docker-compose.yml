@@ -13,6 +13,7 @@ proxy:
     - ldap
     - cas
     - mapfishapp
+    - ldapadmin
     - header
   volumes:
     - ./datadir:/etc/georchestra
@@ -35,3 +36,12 @@ header:
   image: header
   volumes:
     - ./datadir:/etc/georchestra
+
+ldapadmin:
+  image: ldapadmin
+  links:
+    - database
+    - ldap
+  volumes:
+    - ./datadir:/etc/georchestra
+
