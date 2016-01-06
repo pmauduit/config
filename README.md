@@ -21,7 +21,7 @@ packages, and can be used as a reference to build your own "geOrchestra
 datadir".
 
 
-Usage 
+Usage
 =======
 
 
@@ -34,4 +34,13 @@ create a `${CATALINA_HOME}bin/setenv.sh` file, containing:
 export CATALINA_OPTS="${CATALINA_OPTS} -Dgeorchestra.datadir="/path/to/datadir" ...`
 ```
 
+Docker composition
+=====================
 
+In the current directory:
+
+```
+docker-compose up
+```
+
+The service should then be available at `http://localhost:8080/`.
