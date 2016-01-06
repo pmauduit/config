@@ -15,7 +15,7 @@ GEOR.custom = {
      * Integer value representing the header height, as set in the shared maven filters
      * Defaults to 90
      */
-    HEADER_HEIGHT: 0,
+    HEADER_HEIGHT: 90,
 
     /***** Beginning of config options which can be set in this file *****/
 
