@@ -4,6 +4,11 @@ database:
 ldap:
   image: georchestra-ldap
 
+geoserver:
+  image: geoserver
+  environment:
+    - JAVA_OPTS="-DGEOSERVER_DATA_DIR=/non/existent/directory/"
+
 proxy:
   image: security-proxy
   ports:
@@ -16,6 +21,7 @@ proxy:
     - ldapadmin
     - geonetwork
     - header
+    - geoserver
   volumes:
     - ./datadir:/etc/georchestra
 
@@ -48,6 +54,8 @@ ldapadmin:
 
 geonetwork:
   image: geonetwork
+  ports:
+    - "1099:1099"
   links:
     - database
     - ldap
