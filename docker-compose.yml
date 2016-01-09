@@ -1,8 +1,8 @@
 database:
-  image: georchestra-db
+  build: ./postgresql
 
 ldap:
-  image: georchestra-ldap
+  build: ./ldap
 
 geoserver:
   image: geoserver
