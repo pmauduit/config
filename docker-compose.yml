@@ -6,8 +6,6 @@ ldap:
 
 geoserver:
   image: geoserver
-  environment:
-    - JAVA_OPTS="-DGEOSERVER_DATA_DIR=/non/existent/directory/"
 
 proxy:
   image: security-proxy
@@ -18,6 +16,7 @@ proxy:
     - ldap
     - cas
     - mapfishapp
+    - extractorapp
     - ldapadmin
     - geonetwork
     - header
@@ -34,6 +33,13 @@ cas:
 
 mapfishapp:
   image: mapfishapp
+  links:
+    - database
+  volumes:
+    - ./datadir:/etc/georchestra
+
+extractorapp:
+  image: extractorapp
   links:
     - database
   volumes:
